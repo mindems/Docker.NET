@@ -1,0 +1,15 @@
+version: "3"
+services:
+  ticket:
+    image: ticketservice-image
+    build: ./TicketService/
+    ports:
+      - "4000:80"
+    depends_on:
+      - sql.data
+  sql.data:
+    image: ticketdata-image
+    build: ./TicketData/
+    environment:
+      SA_PASSWORD: "<!Passw0rd>"
+      ACCEPT_EULA: "Y"
